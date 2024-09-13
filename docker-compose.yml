@@ -1,0 +1,15 @@
+version: '3.3'
+services:
+  laravel-11-docker:
+    build: ./
+    ports:
+      - 9002:80 #se acessar a parta 9002 ira redirecionar para a 80
+    volumes:
+      - ./:/usr/share/nginx #compartilha os arquivos alterados para o servidor nginx
+    restart: always #se ocorrer algum problema no serviço sempre ira restartar
+    networks:
+      - docker #define uma rede para o serviço
+
+networks:
+  docker:
+#     drive: bridge

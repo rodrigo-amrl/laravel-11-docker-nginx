@@ -1,7 +1,7 @@
 # imagem do servidor nginx com a ultima versão do php
 FROM wyveo/nginx-php-fpm:latest
 #copia o projeto para a pasta html do nginx
-COPY . /user/share/nginx/html
+COPY . /usr/share/nginx/html
 # copia o arquivo de configuração do nginx para a pasta de instalação do nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # define o diretório de execução do projeto, no servidor nginx fica na pasta html 
