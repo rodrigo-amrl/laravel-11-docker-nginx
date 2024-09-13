@@ -1,1 +1,1 @@
-# laravel-11-docker-nginx
+# Laravel 11 com Docker, Nginx e Vue.js
