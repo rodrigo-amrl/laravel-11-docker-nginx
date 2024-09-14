@@ -5,11 +5,26 @@ services:
     ports:
       - 9002:80 #se acessar a parta 9002 ira redirecionar para a 80
     volumes:
-      - ./:/usr/share/nginx #compartilha os arquivos alterados para o servidor nginx
+      - ./:/usr/share/nginx/html #compartilha os arquivos alterados para o servidor nginx
     restart: always #se ocorrer algum problema no serviço sempre ira restartar
+    depends_on:
+      - db
     networks:
       - docker #define uma rede para o serviço
+  db:
+    image: mysql
+    restart: always
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    volumes:
+      - .docker/dbdata:/var/lib/mysql   #mapear os dados do mysql para salvar os dados no projeto.
+    networks:
+      - docker
 
 networks:
   docker:
-#     drive: bridge
